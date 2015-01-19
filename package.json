@@ -1,0 +1,30 @@
+{
+  "name": "turf-vincenty-direct",
+  "version": "1.0.0",
+  "description": "turf vincenty direct module",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrzimmerman/turf-vincenty-direct.git"
+  },
+  "keywords": [
+    "turf",
+    "vincenty",
+    "direct",
+    "miles",
+    "km"
+  ],
+  "author": "jrzimmerman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrzimmerman/turf-vincenty-direct/issues"
+  },
+  "homepage": "https://github.com/jrzimmerman/turf-vincenty-direct",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "tape": "^3.0.3"
+  }
+}
