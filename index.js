@@ -1,11 +1,13 @@
 //http://en.wikipedia.org/wiki/Vincenty%27s_formulae
 //https://gist.github.com/mathiasbynens/354587
 
-function vincentyDirect(x1, y1, bearing, dist) {
+var point = require('turf-point');
+
+function vincentyDirect(x1, y1, bearing, distance) {
  var a = 6378137,
      b = 6356752.3142,
      f = 1 / 298.257223563, // WGS-84 ellipsiod
-     s = dist,
+     s = distance,
      alpha1 = toRad(bearing),
      sinAlpha1 = Math.sin(alpha1),
      cosAlpha1 = Math.cos(alpha1),
