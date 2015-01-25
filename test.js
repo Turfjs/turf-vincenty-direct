@@ -1,5 +1,4 @@
 var test = require('tape');
-var distance = require('turf-vincenty-direct');
 var destination = require('./');
 
 test('destination', function(t){
