@@ -3,7 +3,8 @@
 
 var point = require('turf-point');
 
-function vincentyDirect(x1, y1, bearing, distance) {
+module.exports = function (point1, bearing, distance) {
+ var coordinates1 = point1.geometry.coordinates;
  var a = 6378137,
      b = 6356752.3142,
      f = 1 / 298.257223563, // WGS-84 ellipsiod
@@ -11,7 +12,7 @@ function vincentyDirect(x1, y1, bearing, distance) {
      alpha1 = toRad(bearing),
      sinAlpha1 = Math.sin(alpha1),
      cosAlpha1 = Math.cos(alpha1),
-     tanU1 = (1 - f) * Math.tan(toRad(y1)),
+     tanU1 = (1 - f) * Math.tan(toRad(coordinates1[1])),
      cosU1 = 1 / Math.sqrt((1 + tanU1 * tanU1)), sinU1 = tanU1 * cosU1,
      sigma1 = Math.atan2(tanU1, cosAlpha1),
      sinAlpha = cosU1 * sinAlpha1,
@@ -35,7 +36,7 @@ function vincentyDirect(x1, y1, bearing, distance) {
      C = f / 16 * cosSqAlpha * (4 + f * (4 - 3 * cosSqAlpha)),
      L = lambda - (1 - C) * f * sinAlpha * (sigma + C * sinSigma * (cos2SigmaM + C * cosSigma * (-1 + 2 * cos2SigmaM * cos2SigmaM))),
      revAz = Math.atan2(sinAlpha, -tmp); // final bearing
- return new LatLon(toDeg(y2), x1 + toDeg(L));
+ return new LatLon(toDeg(y2), coordinates1[0] + toDeg(L));
 };
 function toRad(degree) {
  return degree * Math.PI / 180;
