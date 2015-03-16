@@ -2,11 +2,31 @@
 //https://gist.github.com/mathiasbynens/354587
 var point = require('turf-point');
 
-module.exports = function (point1, bearing, distance) {
+module.exports = function (point1, distance, bearing, units) {
  var coordinates1 = point1.geometry.coordinates;
- var a = 6378137,
-     b = 6356752.3142,
-     f = 1 / 298.257223563, // WGS-84 ellipsiod
+ var R;
+  switch(units){
+    case 'miles':
+      R = 3960;
+      break;
+    case 'kilometers':
+      R = 6373;
+      break;
+    case 'degrees':
+      R = 57.2957795;
+      break;
+    case 'radians':
+      R = 1;
+      break;
+    case undefined:
+      R = 6373;
+      break;
+    default:
+      throw new Error('unknown option given to "units"');
+  }
+ var a = 6378137, // length of semi-major axis of the ellipsoid (radius at equator);  (6378137.0 metres in WGS-84)
+     b = 6356752.3142, // length of semi-minor axis of the ellipsoid (radius at the poles); (6356752.314245 meters in WGS-84)
+     f = 1 / 298.257223563, // flattening of the ellipsoid; (1/298.257223563 in WGS-84)
      s = distance,
      alpha1 = toRad(bearing),
      sinAlpha1 = Math.sin(alpha1),

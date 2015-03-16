@@ -1,6 +1,6 @@
 {
   "name": "turf-vincenty-direct",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "turf vincenty direct module",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "turf",
     "vincenty",
     "direct",
+    "bearing",
     "miles",
     "km"
   ],

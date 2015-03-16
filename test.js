@@ -1,4 +1,5 @@
 var test = require('tape');
+var distance = require('turf-distance');
 var destination = require('./');
 
 test('destination', function(t){
@@ -9,7 +10,7 @@ test('destination', function(t){
   var dist = 100;
   var bear = 180;
 
-  var pt2 = destination(pt1, dist, bear);
+  var pt2 = destination(pt1, dist, bear, 'kilometers');
   t.ok(pt2, 'should return a point');
   t.end();
 });
